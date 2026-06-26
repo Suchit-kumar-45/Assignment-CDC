@@ -1,25 +1,26 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        vector<int>ans;
-        vector<int>temp1;
-        vector<int>temp2;
-        for(int i=0;i<nums.size();i++)
+        int n=nums.size();
+        vector<int>ans(n);
+        int pos=0;
+        int neg=1;
+        for(int i=0;i<n;i++)
         {
-            if(nums[i]>0)
+            if(nums[i]<0)
             {
-                temp1.push_back(nums[i]);
+                ans[neg]=nums[i];
+                neg+=2;
             }
             else
             {
-                temp2.push_back(nums[i]);
+                ans[pos]=nums[i];
+                pos+=2;
             }
         }
-        for(int i=0;i<temp1.size();i++)
-        {
-            ans.push_back(temp1[i]);
-            ans.push_back(temp2[i]);
-        }
         return ans;
+        
+
+        
     }
 };
